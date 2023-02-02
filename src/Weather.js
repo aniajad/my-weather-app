@@ -1,12 +1,20 @@
-import React from "react";
-import from "./Weather.css";
+import React, { useState } from "react";
+import axios from "axios";
+import "./Weather.css";
 
 export default function Weather() {
   const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+  const [weatherData, setWeatherData] = useState({});
 
   function handleResponse(response) {
-    setTemperature(response.data.temperature.current);
+    setWeatherData({
+      temperature: response.data.temperature.current,
+      feels_like: response.data.temperature.feels_like,
+      humidity: response.data.temperature.humidity,
+      wind: response.data.wind.speed,
+      query: response.data.city,
+      description: response.data.condition.description,
+    });
     setReady(true);
   }
 
@@ -39,10 +47,10 @@ export default function Weather() {
             </div>
           </div>
         </form>
-        <h1>Bonn</h1>
+        <h1>{weatherData.query}</h1>
         <ul>
           <li>Wednesday 21:00</li>
-          <li>Mostly Cloudy</li>
+          <li>{weatherData.description}</li>
         </ul>
         <div className="row mt-3">
           <div className="col-6">
@@ -51,15 +59,17 @@ export default function Weather() {
               alt="Mostly Cloudy"
             />
 
-            <span className="degrees">Math.round(${temperature})</span>
+            <span className="degrees">
+              {Math.round(weatherData.temperature)}
+            </span>
             <span className="unit">°C</span>
           </div>
 
           <div className="col-6">
             <ul>
-              <li>Feels like: 3°C</li>
-              <li>Humidity: 84%</li>
-              <li>Wind: 8 km/h</li>
+              <li>Feels like: {Math.round(weatherData.feels_like)}°C</li>
+              <li>Humidity: {weatherData.humidity}%</li>
+              <li>Wind: {weatherData.wind} km/h</li>
             </ul>
           </div>
         </div>
@@ -69,7 +79,7 @@ export default function Weather() {
     const apiKey = "d6adb6d48b0afcb13103tf940oab4e26";
     let query = "Bonn";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${query}&key=${apiKey}&units=metric`;
-    axios.get(apiUrl).then();
+    axios.get(apiUrl).then(handleResponse);
 
     return "Loading...";
   }
