@@ -1,0 +1,48 @@
+.Weather {
+  border: 1px solid #dadde1;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: #272343;
+  padding: 16px;
+
+  border-radius: 5px;
+}
+
+.Weather h1 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  margin: 20px 0 0 0;
+}
+
+.Weather ul {
+  padding: 0;
+  margin: 0;
+}
+
+.Weather li {
+  list-style: none;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 400;
+}
+
+.Weather img {
+  padding-bottom: 20px;
+}
+
+.Weather .degrees {
+  font-weight: bold;
+  color: rgb(35, 35, 35);
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: 400;
+}
+
+.Weather .unit {
+  font-size: 16px;
+  position: relative;
+  top: -34px;
+  text-decoration: none;
+  margin-left: 5px;
+}
