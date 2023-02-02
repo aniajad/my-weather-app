@@ -1,5 +1,5 @@
 import React from "react";
-import Weather from "./Weather.js";
+import Weather from "./Weather";
 
 import "./App.css";
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather />
+        <Weather defaultCity="Bonn" />
         <footer>
           Open Source on{" "}
           <a
