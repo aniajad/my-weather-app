@@ -4,15 +4,15 @@
   text-decoration: none;
   color: #272343;
   padding: 16px;
-
   border-radius: 5px;
+  background-color: #8daecf;
 }
 
 .Weather h1 {
   font-size: 24px;
   font-weight: 500;
   line-height: 29px;
-  margin: 20px 0 0 0;
+  margin: 10px 0 10px 0;
 }
 
 .Weather ul {
