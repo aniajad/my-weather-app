@@ -2,6 +2,7 @@ import React from "react";
 import "./WeatherDetails.css";
 import Date from "./Date";
 import TemperatureUnits from "./TemperatureUnits";
+import FeelsLike from "./FeelsLike";
 
 export default function WeatherDetails(props) {
   return (
@@ -24,7 +25,9 @@ export default function WeatherDetails(props) {
 
         <div className="col-4">
           <ul>
-            <li>Feels like: {Math.round(props.data.feelsLike)}°C</li>
+            <li>
+              <FeelsLike celsius={props.data.feelsLike} />
+            </li>
             <li>Humidity: {Math.round(props.data.humidity)}%</li>
             <li>Wind: {Math.round(props.data.wind)} km/h</li>
           </ul>
