@@ -16,7 +16,7 @@
 }
 
 .Weather ul {
-  padding: 0;
+  padding: 20px 0 0 0;
   margin: 0;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .Weather img {
-  padding-bottom: 20px;
+  padding-bottom: 35px;
 }
 
 .Weather .degrees {

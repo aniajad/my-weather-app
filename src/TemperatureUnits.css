@@ -1,0 +1,15 @@
+.TemperatureUnits .degrees {
+  font-weight: bold;
+  color: rgb(35, 35, 35);
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: 400;
+}
+
+.TemperatureUnits .unit {
+  font-size: 16px;
+  position: relative;
+  top: -34px;
+  text-decoration: none;
+  margin-left: 5px;
+}

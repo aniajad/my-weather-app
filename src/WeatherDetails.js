@@ -1,6 +1,7 @@
 import React from "react";
 import "./WeatherDetails.css";
 import Date from "./Date";
+import TemperatureUnits from "./TemperatureUnits";
 
 export default function WeatherDetails(props) {
   return (
@@ -14,14 +15,14 @@ export default function WeatherDetails(props) {
         <li className="text-capitalize">{props.data.description}</li>
       </ul>
       <div className="row mt-3">
-        <div className="col-6">
+        <div className="col-4">
           <img src={props.data.iconUrl} alt={props.data.description} />
-
-          <span className="degrees">{Math.round(props.data.temperature)}</span>
-          <span className="unit">°C</span>
+        </div>
+        <div className="col-4">
+          <TemperatureUnits celsius={props.data.temperature} />
         </div>
 
-        <div className="col-6">
+        <div className="col-4">
           <ul>
             <li>Feels like: {Math.round(props.data.feelsLike)}°C</li>
             <li>Humidity: {Math.round(props.data.humidity)}%</li>
