@@ -16,7 +16,7 @@ export default function FeelsLike(props) {
   if (unit === "celsius") {
     return (
       <div className="FeelsLike">
-        <span>Feels like: {Math.round(props.celsius)}</span>
+        <span className="degrees">Feels like: {Math.round(props.celsius)}</span>
         <span className="units">
           °C|{" "}
           <a href="/" onClick={convertFahrenheit}>

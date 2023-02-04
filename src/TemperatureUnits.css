@@ -4,11 +4,13 @@
 }
 
 .TemperatureUnits .degrees {
+  margin: 15px 0 0 0;
   font-weight: bold;
   color: rgb(35, 35, 35);
   font-size: 64px;
   line-height: 64px;
   font-weight: 400;
+  text-align: left;
 }
 
 .TemperatureUnits .unit {
