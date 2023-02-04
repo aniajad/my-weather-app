@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
+import Date from "./Date";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   function handleResponse(response) {
     setWeatherData({
+      ready: true,
+      query: response.data.city,
+      date: new Date(response.data.time * 1000),
       temperature: response.data.temperature.current,
       feelsLike: response.data.temperature.feels_like,
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
-      query: response.data.city,
       description: response.data.condition.description,
       iconUrl: response.data.condition.icon_url,
     });
@@ -48,11 +51,16 @@ export default function Weather(props) {
         </form>
         <h1>{weatherData.query}</h1>
         <ul>
-          <li>Wednesday 21:00</li>
-          <li className="text-capitalized">{weatherData.description}</li>
+          <li>
+            Last updated:
+            <Date date={weatherData.date} />
+          </li>
+          <li className="text-capitalize">{weatherData.description}</li>
         </ul>
         <div className="row mt-3">
           <div className="col-6">
+            <img src={weatherData.iconUrl} alt={weatherData.description} />
+
             <span className="degrees">
               {Math.round(weatherData.temperature)}
             </span>
