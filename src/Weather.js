@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Weather.css";
 import WeatherDetails from "./WeatherDetails";
 import "./WeatherDetails.css";
+import Forecast from "./Forecast";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -24,7 +25,6 @@ export default function Weather(props) {
 
   function search() {
     const apiKey = "d6adb6d48b0afcb13103tf940oab4e26";
-
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
@@ -39,9 +39,9 @@ export default function Weather(props) {
   }
 
   function retrievePosition(position) {
-    let apiKey = "d6adb6d48b0afcb13103tf940oab4e26";
-    let lat = position.coords.latitude;
-    let lon = position.coords.longitude;
+    const apiKey = "d6adb6d48b0afcb13103tf940oab4e26";
+    let lat = position.coordinates.latitude;
+    let lon = position.coordinates.longitude;
     let url = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
     axios.get(url).then(handleResponse);
   }
@@ -82,6 +82,7 @@ export default function Weather(props) {
           </div>
         </form>
         <WeatherDetails data={weatherData} />
+        <Forecast query={weatherData.query} />
       </div>
     );
   } else {
