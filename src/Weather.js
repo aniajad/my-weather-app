@@ -42,11 +42,12 @@ export default function Weather(props) {
     const apiKey = "d6adb6d48b0afcb13103tf940oab4e26";
     let lat = position.coordinates.latitude;
     let lon = position.coordinates.longitude;
-    let url = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+    let url = `https://api.shecodes.io/weather/v1/current?lat=${lat}&on=${lon}&key=${apiKey}&units=metric`;
     axios.get(url).then(handleResponse);
   }
 
-  function getCurrentCity() {
+  function getCurrentCity(event) {
+    event.preventDefault();
     navigator.geolocation.getCurrentPosition(retrievePosition);
   }
 
