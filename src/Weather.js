@@ -4,6 +4,7 @@ import "./Weather.css";
 import WeatherDetails from "./WeatherDetails";
 import "./WeatherDetails.css";
 import Forecast from "./Forecast";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -40,9 +41,9 @@ export default function Weather(props) {
 
   function retrievePosition(position) {
     const apiKey = "d6adb6d48b0afcb13103tf940oab4e26";
-    let lat = position.coordinates.latitude;
-    let lon = position.coordinates.longitude;
-    let url = `https://api.shecodes.io/weather/v1/current?lat=${lat}&on=${lon}&key=${apiKey}&units=metric`;
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let url = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
     axios.get(url).then(handleResponse);
   }
 
@@ -87,6 +88,17 @@ export default function Weather(props) {
     );
   } else {
     search();
-    return "Loading...";
+    return (
+      <ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="#8daecf"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+      />
+    );
   }
 }
