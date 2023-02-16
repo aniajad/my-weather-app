@@ -46,8 +46,7 @@ export default function Weather(props) {
     axios.get(url).then(handleResponse);
   }
 
-  function getCurrentCity(event) {
-    event.preventDefault();
+  function getCurrentCity() {
     navigator.geolocation.getCurrentPosition(retrievePosition);
   }
 
